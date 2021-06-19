@@ -151,7 +151,33 @@ public static String replaceSpace(StringBuffer str) {
 ```
 
 Python：
+```python
+def replaceSpace(self, s: str) -> str:
 
+        # 统计空格个数
+        count = 0
+        for i in s:
+            if i == ' ':
+                count += 1
+        p1 = len(s) - 1
+        
+        # 末尾填充
+        s += ' ' * count * 2
+        p2 = len(s) - 1
+        s = list(s)
+
+        while p1 >= 0:
+            # p1指向空格则添加%20
+            if s[p1] == ' ':
+                for c in '02%':
+                    s[p2] = c
+                    p2 -= 1
+            else:
+                s[p2] = s[p1]
+                p2 -= 1
+            p1 -= 1
+        return ''.join(s)
+```
 
 Go：
 ```go
