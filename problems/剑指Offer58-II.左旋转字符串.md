@@ -118,7 +118,25 @@ class Solution {
 }
 ```
 Python：
+```python
+class Solution:
+    def reverseLeftWords(self, s: str, n: int) -> str:
 
+        def reverse(start, end):
+            while start < end:
+                s[start], s[end] = s[end], s[start]
+                start += 1
+                end -= 1
+
+        length_s = len(s)
+        n = n % length_s
+        s = list(s)
+
+        reverse(0, n-1)
+        reverse(n, length_s-1)
+        reverse(0, length_s-1)
+        return ''.join(s)
+```
 Go：
 
 ```go
